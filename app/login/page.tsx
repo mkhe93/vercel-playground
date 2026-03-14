@@ -18,6 +18,12 @@ export default function LoginPage() {
     return url
   }
 
+  console.log(getURL())
+  console.log(process.env.NEXT_PUBLIC_SITE_URL
+ ?? "Not defined NEXT_PUBLIC_SITE_URL")
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL ?? "not defined NEXT_PUBLIC_VERCEL_URL")
+  console.log(process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ?? "not defined NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL")
+
   const handleGoogleLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',

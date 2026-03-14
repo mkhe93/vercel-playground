@@ -8,8 +8,7 @@ export default function LoginPage() {
 
   const getURL = () => {
     let url =
-      process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
-      process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
+      process?.env?.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ?? // Automatically set by Vercel.
       'http://localhost:3000/'
     // Make sure to include `https://` when not localhost.
     url = url.startsWith('http') ? url : `https://${url}`
@@ -17,12 +16,6 @@ export default function LoginPage() {
     url = url.endsWith('/') ? url : `${url}/`
     return url
   }
-
-  console.log(getURL())
-  console.log(process.env.NEXT_PUBLIC_SITE_URL
- ?? "Not defined NEXT_PUBLIC_SITE_URL")
-  console.log(process.env.NEXT_PUBLIC_VERCEL_URL ?? "not defined NEXT_PUBLIC_VERCEL_URL")
-  console.log(process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ?? "not defined NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL")
 
   const handleGoogleLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
